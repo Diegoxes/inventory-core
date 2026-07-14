@@ -1,0 +1,18 @@
+spring:
+  config:
+    activate:
+      on-profile: docker
+
+  datasource:
+    url: jdbc:mariadb://${MARIADB_HOST:mariadb-inventory}:${MARIADB_PORT:3306}/${MARIADB_DB:smarthome_core}
+    username: ${MARIADB_USER:root}
+    password: ${MARIADB_PASSWORD:root}
+    driver-class-name: org.mariadb.jdbc.Driver
+
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MariaDBDialect
+
+  flyway:
+    locations: classpath:db/migration-mysql

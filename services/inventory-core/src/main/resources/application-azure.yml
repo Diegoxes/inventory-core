@@ -1,0 +1,20 @@
+spring:
+  config:
+    activate:
+      on-profile: azure
+
+  datasource:
+    url: jdbc:mariadb://${MARIADB_HOST}:${MARIADB_PORT:3306}/${MARIADB_DB:smarthome_core}?useSsl=true&requireSsl=true
+    username: ${MARIADB_USER}
+    password: ${MARIADB_PASSWORD}
+    driver-class-name: org.mariadb.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MariaDBDialect
+
+  flyway:
+    locations: classpath:db/migration-mysql
